@@ -1,17 +1,27 @@
 {
-  "name": "@dailybeast/mobiledoc-react-renderer",
-  "version": "1.0.0",
-  "description": "Mobiledoc renderer that outputs valid react jsx",
-  "main": "dist/index.js",
-  "scripts": {
-    "start": "babel-node src/index.js",
-    "build": "rimraf dist && babel src -d dist",
-    "prepublish": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "The Daily Beast",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
-  "author": "",
-  "license": "MIT",
+  "description": "Mobiledoc renderer that outputs valid react jsx",
   "devDependencies": {
-    "babel-preset-react": "^6.22.0"
-  }
+    "babel-jest": "^22.4.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^22.4.2",
+    "semistandard": "^12.0.1"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "@dailybeast/mobiledoc-react-renderer",
+  "scripts": {
+    "build": "rimraf dist && babel src -d dist",
+    "jest": "jest",
+    "lint": "semistandard",
+    "prepublish": "npm run build",
+    "start": "babel-node src/index.js",
+    "test": "semistandard && jest"
+  },
+  "version": "1.0.0"
 }

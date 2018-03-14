@@ -3,6 +3,17 @@ import Renderer_0_3, { // eslint-disable-line
   MOBILE_DOC_VERSION_0_3_1
 } from './renderers/0-3';
 
+// ///////////////////////////////////////
+//
+// This will be factored out into a seperate NPM package
+// and made publically available as TDB's first open-source
+// contribution.
+//
+// NOTE: Currently unsupported mobiledoc features are:
+// native image card, default card renderers
+//
+// ///////////////////////////////////////
+
 export default class MobiledocReactRenderer {
   constructor ({ atoms = [], cards = [], markups = [] }) {
     this.options = {

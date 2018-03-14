@@ -1,4 +1,5 @@
 import React from 'react';
+import uuidV4 from 'uuid/v4';
 
 export const MOBILE_DOC_VERSION_0_3_0 = '0.3.0';
 export const MOBILE_DOC_VERSION_0_3_1 = '0.3.1';
@@ -12,86 +13,123 @@ export const MARKUP_MARKER_TYPE = 0;
 export const ATOM_MARKER_TYPE = 1;
 
 export default class Renderer {
-  constructor(mobiledoc, options) {
+  constructor (mobiledoc, { atoms = [], cards = [], markups = [] }) {
     this.mobiledoc = mobiledoc;
-    this.cards = options.cards;
+    this.atoms = atoms;
+    this.cards = cards;
+    this.markups = markups;
+
+    this.renderCallbacks = [];
   }
 
-  render() {
-    return <div>{this.renderSections()}</div>
+  render () {
+    const renderedSections = <div className='Mobiledoc'>{this.renderSections()}</div>;
+    this.renderCallbacks.forEach(cb => cb());
+
+    return renderedSections;
   }
 
-  renderSections() {
-    return this.mobiledoc.sections.map(section => {
-      return this.renderSection(section);
-    });
+  renderSections () {
+    return this.mobiledoc.sections.map((section, index) => this.renderSection(section, index));
   }
 
-  renderSection(section) {
+  renderSection (section, nodeKey) {
     const [type] = section;
 
     switch (type) {
       case MARKUP_SECTION_TYPE:
-        return this.renderMarkupSection(section);
+        return this.renderMarkupSection(section, nodeKey);
       case LIST_SECTION_TYPE:
-        return this.renderListSection(section);
+        return this.renderListSection(section, nodeKey);
       case CARD_SECTION_TYPE:
-        return this.renderCardSection(section);
+        return this.renderCardSection(section, nodeKey);
       default:
         return null;
     }
   }
 
-  renderMarkupSection([type, TagName, markers]) {
-    let element = <TagName children={[]}></TagName>;
+  renderMarkupSection ([type, TagName, markers], nodeKey) {
+    const element = <TagName key={nodeKey}>{[]}</TagName>;
     return this.renderMarkersOnElement(element, markers);
   }
 
-  renderListSection([type, TagName, markers]) {
-    const items = markers.map(item => {
-      return this.renderMarkersOnElement(<li children={[]} />, item);
-    });
+  renderListSection ([type, TagName, markers], nodeKey) {
+    const items = markers.map((item, index) => this.renderMarkersOnElement(<li key={index}>{[]}</li>, item));
 
-    return <TagName children={items}></TagName>;
+    return <TagName key={nodeKey}>{items}</TagName>;
   }
 
-  renderCardSection([type, index]) {
+  renderAtomSection (atomIndex) {
+    const [name, text, payload] = this.mobiledoc.atoms[atomIndex];
+    const atom = this.atoms.find(a => a.name === name);
+
+    if (atom) {
+      const key = `${name}-${text.length}`;
+      const env = {
+        name,
+        isInEditor: false,
+        dom: 'dom'
+      };
+      const options = {};
+      const props = {
+        key,
+        env,
+        options,
+        payload,
+        text
+      };
+
+      return atom.render(props);
+    }
+
+    return null;
+  }
+
+  renderCardSection ([type, index], nodeKey) {
     const [name, payload] = this.mobiledoc.cards[index];
-    const card = this.cards[index];
+    const card = this.cards.find(c => c.name === name);
 
-    let env = {
-      name: name,
-      isInEditor: false,
-      dom: 'dom',
-      // didRender: (callback) => this._registerRenderCallback(callback),
-      // onTeardown: (callback) => this._registerTeardownCallback(callback)
-    };
+    if (card) {
+      const env = {
+        name,
+        isInEditor: false,
+        dom: 'dom',
+        didRender: (callback) => this.registerRenderCallback(callback),
+        onTeardown: (callback) => this.registerRenderCallback(callback)
+      };
+      const options = {};
 
-    let options = {};
+      return card.render({ env, options, payload: { ...payload, key: nodeKey } });
+    }
 
-    return card.render({ env, options, payload });
+    return null;
   }
 
-  renderMarkersOnElement(element, markers) {
+  renderMarkersOnElement (element, markers) {
     const elements = [element];
-
-    let pushElement = (openedElement) => {
+    const pushElement = (openedElement) => {
       element.props.children.push(openedElement);
       elements.push(openedElement);
       element = openedElement;
     };
 
     markers.forEach(marker => {
-      let [type, openTypes, closeCount, value] = marker;
-      openTypes.forEach(type => {
-        const [TagName, attrs] = this.mobiledoc.markups[type];
+      let [type, openTypes, closeCount, value] = marker; // eslint-disable-line prefer-const
+
+      openTypes.forEach(openType => {
+        const [TagName, attrs] = this.mobiledoc.markups[openType];
         const props = Object.assign({ children: [] }, this.parseProps(attrs));
 
         if (TagName) {
-          let openedElement = <TagName {...props}></TagName>
-          pushElement(openedElement);
+          const definedMarkup = this.markups.find(markup => markup.name === TagName);
+          if (definedMarkup) {
+            const { render: Markup } = definedMarkup;
+            pushElement(<Markup key={uuidV4()} {...props} />);
+          } else {
+            pushElement(<TagName key={uuidV4()} {...props} />);
+          }
         } else {
-          closeCount--;
+          closeCount -= 1;
         }
       });
 
@@ -100,12 +138,12 @@ export default class Renderer {
           element.props.children.push(value);
           break;
         case ATOM_MARKER_TYPE:
-          // render atom
+          element.props.children.push(this.renderAtomSection(value));
           break;
         default:
       }
 
-      for (let j = 0, m = closeCount; j < m; j++) {
+      for (let j = 0, m = closeCount; j < m; j += 1) {
         elements.pop();
         element = elements[elements.length - 1];
       }
@@ -114,13 +152,17 @@ export default class Renderer {
     return element;
   }
 
-  parseProps(attrs) {
+  parseProps (attrs) {
     if (attrs) {
       return {
-        [attrs[0]]: attrs[1],
+        [attrs[0]]: attrs[1]
       };
     }
 
     return null;
+  }
+
+  registerRenderCallback (cb) {
+    this.renderCallbacks.push(cb);
   }
 }
