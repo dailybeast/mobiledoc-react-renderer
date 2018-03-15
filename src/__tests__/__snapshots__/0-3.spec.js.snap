@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React Mobiledoc renderer 0.3 Real content renders complex article mobiledocs 1`] = `
+<div
+  className="Mobiledoc"
+>
+  <p>
+    For American visitors to the U.K., it is up there with the lack of air conditioning and low water pressure in the shower. 
+    <a
+      href="https://www.thedailybeast.com/the-role-of-meghan-markles-lifetime-princess"
+    >
+      Meghan Markle
+    </a>
+     is learning how to cope with one of the great inconveniences of British life by learning to drive stick.
+  </p>
+  <p>
+    According to a report this weekend in the 
+    <a
+      href="http://www.dailymail.co.uk/femail/article-5489001/Prince-Harry-teaching-Meghan-drive-manually-left.html"
+    >
+      <em>
+        Mail on Sunday
+      </em>
+    </a>
+    , 
+    <a
+      href="https://www.thedailybeast.com/prince-harry-and-meghan-markle-to-marry-in-spring"
+    >
+      Meghan
+    </a>
+     is receiving lessons from none other than her boyfriend, 
+    <a
+      href="https://www.thedailybeast.com/if-she-marries-prince-harry-meghan-markle-will-shatter-a-royal-race-taboo"
+    >
+      Prince Harry
+    </a>
+    .
+  </p>
+  <p>
+    A source told the paper Markle has been seen brushing up on her manual gear-shift skills inside the grounds at Kensington Palace, where she lives with Prince Harry, 33, as she prepares for their May 19 wedding.
+  </p>
+  <p>
+    Like the vast majority of American-taught drivers, Markle learned to drive on an automatic transmission. In the U.K., automatics, once a rarity, are becoming more popular, but still only account for around a quarter of cars on the road. 
+  </p>
+  <p>
+    Visitors to the U.K. with a full driving license in their home country are legally allowed to drive for up to a year on British roads. 
+  </p>
+  <p>
+    Although all of the official royal fleet is believed to be automatics, Markle is learning to drive manual in case of an emergency, sources told 
+    <em>
+      The Mail
+    </em>
+    . 
+  </p>
+  <p>
+    The security aspect to the driving lessons is crucial, and it has also emerged that Meghan has taken part in a mock kidnap by SAS troops during a two-day course.
+  </p>
+  <p>
+    One former SAS officer told 
+    <a
+      href="https://www.express.co.uk/news/royal/930005/Meghan-Markle-Prince-Harry-royal-wedding-SAS-training-kidnap "
+    >
+      <em>
+        The Sunday Express
+      </em>
+    </a>
+     the course at the SAS HQ in Herefordshire had been “devised to frighten the life out of anyone.” 
+  </p>
+  <p>
+    During one scenario, troops used live ammunition as they “saved” Meghan, 36, from kidnappers.
+  </p>
+  <p>
+    In 1983, when Princess Diana was in a similar training session, her hair caught fire, although it appears no such disaster befell Meghan. 
+  </p>
+  <p>
+    One former SAS man told the 
+    <em>
+      Express
+    </em>
+    : “The men enact a kidnap situation, during which she will have been treated as a hostage, with the area being stormed by the SAS.”
+  </p>
+  <p>
+    Meghan is expected to appear for the first time publicly in the company of the queen Monday, at the Commonwealth Day church service in London.
+  </p>
+</div>
+`;
+
+exports[`React Mobiledoc renderer 0.3 Real content renders complex cheat mobiledocs 1`] = `
+<div
+  className="Mobiledoc"
+>
+  <p>
+    Your smartphone is the IRL equivalent of a magic wand. It can do all sorts of extraordinary things, from tracking your footsteps to summoning Chinese takeout to your doorstep. But if you have the 
+    <a
+      href="https://shop.thedailybeast.com/sales/klikr-universal-remote-control-black?utm_source=thedailybeast.com&utm_medium=referral&utm_campaign=klikr-universal-remote-control-black&utm_term=scsf-275364&utm_content=a0x1a000003bH7l&scsonar=1"
+    >
+      KlikR Universal Remote Control
+    </a>
+    , it can also be the master of your household electronics, too. Here’s how it works? Stick this Kickstarter-funded, coin-sized accessory on or next to any remote-controlled infrared device, and you’ll immediately be able to control it via the companion app. This means you can turn on the AC, flip TV channels, and even bring your ancient ceiling fan back to life with just your phone. It's also equipped with voice commands, smart pausing and muting, and has the ability to organize all of your devices in your home, room by room. Normally, the KlikR Universal Remote Control costs $29, but 
+    <a
+      href="https://shop.thedailybeast.com/sales/klikr-universal-remote-control-black?utm_source=thedailybeast.com&utm_medium=referral&utm_campaign=klikr-universal-remote-control-black&utm_term=scsf-275364&utm_content=a0x1a000003bH7l&scsonar=1"
+    >
+      you can get one today for only $19.99
+    </a>
+    . Save an additional 10% when using code 
+    <strong>
+      MADMARCH10
+    </strong>
+     at checkout. 
+  </p>
+  <p>
+    <em>
+      <a
+        href="https://www.thedailybeast.com/keyword/scouted"
+      >
+        Scouted
+      </a>
+      <i
+        href={null}
+      >
+         is here to surface products that you might like.
+      </i>
+       
+      <a
+        href="https://flipboard.com/@thedailybeast/scouted-t57nqmfky"
+      >
+        Follow us on Flipboard
+      </a>
+       for more. 
+      <i
+        href={null}
+      >
+        Please note that if you buy something featured in one of our posts, The Daily Beast may collect a share of sales.  
+      </i>
+    </em>
+  </p>
+</div>
+`;
