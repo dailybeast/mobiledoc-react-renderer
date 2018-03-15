@@ -16,6 +16,7 @@ function getFixture (path, ...rest) {
   return new Promise((resolve, reject) => {
     readFile(fixture, (err, data) => {
       if (err) {
+        console.log(err);
         reject(err);
       } else {
         resolve(JSON.parse(decoder.write(data)));

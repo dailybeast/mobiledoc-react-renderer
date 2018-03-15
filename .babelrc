@@ -1,7 +1,8 @@
 {
-  "presets": [["env", {
-    "targets": {
-        "node": "current"
-      }
-    }], "react"]
+  "presets": [
+    ["@babel/preset-env", {
+      "shippedProposals": true
+    }],
+    "@babel/preset-react"
+  ]
 }
