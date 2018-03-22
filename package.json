@@ -1,11 +1,15 @@
 {
   "author": "The Daily Beast",
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "uuid": "^3.2.1"
   },
   "jest": {
-    "testPathIgnorePatterns": ["node_modules", "dist"]
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
   },
   "description": "Mobiledoc renderer that outputs valid react jsx",
   "devDependencies": {
@@ -27,7 +31,8 @@
     "build": "rimraf dist && babel src -d dist",
     "jest": "jest",
     "lint": "semistandard",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm run test",
     "start": "babel-node src/index.js",
     "test": "semistandard && jest"
   },
