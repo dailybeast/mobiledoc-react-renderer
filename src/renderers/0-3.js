@@ -13,11 +13,12 @@ export const MARKUP_MARKER_TYPE = 0;
 export const ATOM_MARKER_TYPE = 1;
 
 export default class Renderer {
-  constructor (mobiledoc, { atoms = [], cards = [], markups = [] }) {
+  constructor (mobiledoc, { atoms = [], cards = [], markups = [], additionalProps = {} }) {
     this.mobiledoc = mobiledoc;
     this.atoms = atoms;
     this.cards = cards;
     this.markups = markups;
+    this.additionalProps = additionalProps;
 
     this.renderCallbacks = [];
   }
@@ -75,7 +76,7 @@ export default class Renderer {
         key,
         env,
         options,
-        payload,
+        payload: { ...payload, ...this.additionalProps },
         text
       };
 
@@ -98,8 +99,13 @@ export default class Renderer {
         onTeardown: (callback) => this.registerRenderCallback(callback)
       };
       const options = {};
+      const props = {
+        env,
+        options,
+        payload: { ...payload, key: nodeKey, ...this.additionalProps }
+      };
 
-      return card.render({ env, options, payload: { ...payload, key: nodeKey } });
+      return card.render(props);
     }
 
     return null;
