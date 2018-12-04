@@ -4,7 +4,7 @@ import Renderer_0_3, { // eslint-disable-line
 } from './renderers/0-3';
 
 export default class MobiledocReactRenderer {
-  constructor ({ sections = [], atoms = [], cards = [], markups = [], additionalProps = {} }) {
+  constructor ({ sections = {}, atoms = [], cards = [], markups = [], additionalProps = {} }) {
     this.options = {
       sections,
       atoms,

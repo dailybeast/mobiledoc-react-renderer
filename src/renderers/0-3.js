@@ -13,7 +13,7 @@ export const MARKUP_MARKER_TYPE = 0;
 export const ATOM_MARKER_TYPE = 1;
 
 export default class Renderer {
-  constructor (mobiledoc, { sections = [], atoms = [], cards = [], markups = [], additionalProps = {} }) {
+  constructor (mobiledoc, { sections = {}, atoms = [], cards = [], markups = [], additionalProps = {} }) {
     this.mobiledoc = mobiledoc;
     this.sections = sections;
     this.atoms = atoms;
