@@ -13,8 +13,9 @@ export const MARKUP_MARKER_TYPE = 0;
 export const ATOM_MARKER_TYPE = 1;
 
 export default class Renderer {
-  constructor (mobiledoc, { atoms = [], cards = [], markups = [], additionalProps = {} }) {
+  constructor (mobiledoc, { sections = [], atoms = [], cards = [], markups = [], additionalProps = {} }) {
     this.mobiledoc = mobiledoc;
+    this.sections = sections;
     this.atoms = atoms;
     this.cards = cards;
     this.markups = markups;
@@ -50,7 +51,12 @@ export default class Renderer {
   }
 
   renderMarkupSection ([type, TagName, markers], nodeKey) {
-    const element = <TagName key={nodeKey}>{[]}</TagName>;
+    let props;
+    if (TagName in this.sections) {
+      props = this.sections[TagName];
+    }
+
+    const element = React.createElement(TagName, {key: nodeKey, ...props}, []);
     return this.renderMarkersOnElement(element, markers);
   }
 
