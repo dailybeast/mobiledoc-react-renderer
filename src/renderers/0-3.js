@@ -13,11 +13,12 @@ export const MARKUP_MARKER_TYPE = 0;
 export const ATOM_MARKER_TYPE = 1;
 
 export default class Renderer {
-  constructor (mobiledoc, { atoms = [], cards = [], markups = [], additionalProps = {} }) {
+  constructor (mobiledoc, { atoms = [], cards = [], sections = [], markups = [], additionalProps = {} }) {
     this.mobiledoc = mobiledoc;
     this.atoms = atoms;
     this.cards = cards;
     this.markups = markups;
+    this.sections = sections;
     this.additionalProps = additionalProps;
 
     this.renderCallbacks = [];
@@ -50,8 +51,18 @@ export default class Renderer {
   }
 
   renderMarkupSection ([type, TagName, markers], nodeKey) {
-    const element = <TagName key={nodeKey}>{[]}</TagName>;
-    return this.renderMarkersOnElement(element, markers);
+    debugger;
+    let Element;
+    const customSection = this.sections.find(s => s.name === TagName);
+
+    if (customSection) {
+      const Section = customSection.component;
+      Element = <Section key={nodeKey} {...this.additionalProps}>{[]}</Section>;
+    } else {
+      Element = <TagName key={nodeKey}>{[]}</TagName>;
+    }
+
+    return this.renderMarkersOnElement(Element, markers);
   }
 
   renderListSection ([type, TagName, markers], nodeKey) {
