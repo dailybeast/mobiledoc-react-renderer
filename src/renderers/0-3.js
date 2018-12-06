@@ -51,7 +51,6 @@ export default class Renderer {
   }
 
   renderMarkupSection ([type, TagName, markers], nodeKey) {
-    debugger;
     let Element;
     const customSection = this.sections.find(s => s.name === TagName);
 
