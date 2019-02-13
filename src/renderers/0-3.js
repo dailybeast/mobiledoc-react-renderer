@@ -140,7 +140,7 @@ export default class Renderer {
           const definedMarkup = this.markups.find(markup => markup.name === TagName);
           if (definedMarkup) {
             const { render: Markup } = definedMarkup;
-            pushElement(<Markup key={uuidV4()} {...props} />);
+            pushElement(<Markup key={uuidV4()} {...props} {...this.additionalProps} />);
           } else {
             pushElement(<TagName key={uuidV4()} {...props} />);
           }
