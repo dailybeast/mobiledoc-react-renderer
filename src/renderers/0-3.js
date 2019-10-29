@@ -13,8 +13,9 @@ export const MARKUP_MARKER_TYPE = 0;
 export const ATOM_MARKER_TYPE = 1;
 
 export default class Renderer {
-  constructor (mobiledoc, { atoms = [], cards = [], sections = [], markups = [], additionalProps = {} }) {
+  constructor (mobiledoc, { atoms = [], cards = [], sections = [], markups = [], className = '', additionalProps = {} }) {
     this.mobiledoc = mobiledoc;
+    this.className = className;
     this.atoms = atoms;
     this.cards = cards;
     this.markups = markups;
@@ -25,7 +26,7 @@ export default class Renderer {
   }
 
   render () {
-    const renderedSections = <div className='Mobiledoc'>{this.renderSections()}</div>;
+    const renderedSections = <div className={`Mobiledoc${this.className ? ' ' + this.className : ''}`}>{this.renderSections()}</div>;
     this.renderCallbacks.forEach(cb => cb());
 
     return renderedSections;
