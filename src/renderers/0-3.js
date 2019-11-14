@@ -18,7 +18,7 @@ export default class Renderer {
     cards = [],
     sections = [],
     markups = [],
-    className = 'Mobiledoc',
+    className,
     additionalProps = {}
   }) {
     this.mobiledoc = mobiledoc;
