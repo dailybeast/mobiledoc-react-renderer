@@ -27,7 +27,7 @@ function getFixture (path, ...rest) {
 
 describe('React Mobiledoc renderer', () => {
   describe('0.3', () => {
-    describe('basic formatting', () => {
+    describe('Basic formatting', () => {
       it('renders a basic mobiledoc', async () => {
         const mobiledoc = await getFixture(__dirname, '0-3', 'simple-mobiledoc.json');
 
