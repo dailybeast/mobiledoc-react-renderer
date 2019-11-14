@@ -33,7 +33,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p>Hello world!</p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p>Hello world!</p></div>');
       });
 
       it('renders a bold markup in mobiledoc', async () => {
@@ -41,7 +41,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p><strong>Hello world!</strong></p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p><strong>Hello world!</strong></p></div>');
       });
 
       it('renders a italic markup in mobiledoc', async () => {
@@ -49,7 +49,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p><em>Hello world!</em></p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p><em>Hello world!</em></p></div>');
       });
 
       it('renders a underlined markup in mobiledoc', async () => {
@@ -57,7 +57,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p><u>Hello world!</u></p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p><u>Hello world!</u></p></div>');
       });
 
       it('renders a strikethrough markup in mobiledoc', async () => {
@@ -65,7 +65,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p><s>Hello world!</s></p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p><s>Hello world!</s></p></div>');
       });
 
       it('renders links in mobiledoc', async () => {
@@ -73,7 +73,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p>A link <a href="https://www.thedailybeast.com">Hello world!</a></p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p>A link <a href="https://www.thedailybeast.com">Hello world!</a></p></div>');
       });
 
       it('renders nested markup', async () => {
@@ -81,7 +81,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p>Some <strong>nested <em>markup</em></strong></p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p>Some <strong>nested <em>markup</em></strong></p></div>');
       });
 
       it('renders complex nested markup', async () => {
@@ -89,7 +89,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p>Some <strong>nested <em>markup </em></strong>then normal</p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p>Some <strong>nested <em>markup </em></strong>then normal</p></div>');
       });
 
       it('renders multiple paragraphs', async () => {
@@ -97,7 +97,7 @@ describe('React Mobiledoc renderer', () => {
 
         const rendered = new MobiledocReactRenderer({}).render(mobiledoc);
 
-        expect(renderToStaticMarkup(rendered)).toBe('<div class="Mobiledoc"><p>This is the first paragraph.</p><p>This is the second paragraph.</p></div>');
+        expect(renderToStaticMarkup(rendered)).toBe('<div class=""><p>This is the first paragraph.</p><p>This is the second paragraph.</p></div>');
       });
     });
 

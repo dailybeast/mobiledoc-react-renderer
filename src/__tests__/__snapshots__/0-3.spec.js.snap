@@ -2,7 +2,7 @@
 
 exports[`React Mobiledoc renderer 0.3 Real content renders complex article mobiledocs 1`] = `
 <div
-  className="Mobiledoc"
+  className=""
 >
   <p>
     For American visitors to the U.K., it is up there with the lack of air conditioning and low water pressure in the shower. 
@@ -87,7 +87,7 @@ exports[`React Mobiledoc renderer 0.3 Real content renders complex article mobil
 
 exports[`React Mobiledoc renderer 0.3 Real content renders complex cheat mobiledocs 1`] = `
 <div
-  className="Mobiledoc"
+  className=""
 >
   <p>
     Your smartphone is the IRL equivalent of a magic wand. It can do all sorts of extraordinary things, from tracking your footsteps to summoning Chinese takeout to your doorstep. But if you have the 
